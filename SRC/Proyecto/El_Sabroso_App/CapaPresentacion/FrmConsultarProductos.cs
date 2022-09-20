@@ -1,4 +1,5 @@
-﻿using System;
+﻿using El_Sabroso_App.CapaEntidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace El_Sabroso_App.CapaPresentacion
 {
@@ -46,8 +48,11 @@ namespace El_Sabroso_App.CapaPresentacion
                 else
                 {
                     consultaSql += " AND P.activo = 'N'";
+                    
+
                 }
             //Usando el método GetDBHelper obtenemos la instancia unica de DBHelper (Patrón Singleton) y ejecutamos el método ConsultaSQL()
+            
             DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
             dgbProductos.Rows.Clear();
                 
@@ -66,7 +71,15 @@ namespace El_Sabroso_App.CapaPresentacion
             {
                 habilitarControles(false);
             }
-           
+            // desactivar botones eliminar y editar si no se elige estado activo
+           if ( resultado.Rows.Count > 0)
+            {
+                if (!chkActivo.Checked)
+                {
+                    habilitarControles(false);
+                }
+
+            }
             lblProducto.Text = "Total Registros: " + Convert.ToString(dgbProductos.Rows.Count);
 
         }
@@ -83,8 +96,11 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
+            
         }
+
+   
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -103,7 +119,8 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-
+            new FrmAltaProducto(1, new Producto()).ShowDialog();
+            this.button1_Click(null, null);
         }
 
         private void habilitarControles(bool v)

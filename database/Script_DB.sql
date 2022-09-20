@@ -104,7 +104,35 @@ CONSTRAINT [PK_PROVEEDORES] PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
+SET ANSI_NULLS ON
+GO
 
+
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+USE [El_Sabroso_DB]
+GO
+
+
+CREATE TABLE [dbo].[PRODUCTOS](
+    [Id_producto] [int] IDENTITY (1,1) NOT NULL,
+    [nombre] [varchar](250) NULL,
+    [descripcion] [varchar](250) NULL,
+    [precio] [float] NULL,
+    [categoria] [varchar](50) NULL,
+    [id_proveedor] [int] NULL,
+	[activo] [varchar](1) NULL,
+	FOREIGN KEY (Id_proveedor) REFERENCES dbo.PROVEEDORES(Id_proveedor),
+
+CONSTRAINT [PK_PRODUCTOS] PRIMARY KEY CLUSTERED
+(
+    [Id_producto] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
 
 
 USE [El_Sabroso_DB]
