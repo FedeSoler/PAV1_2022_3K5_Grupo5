@@ -20,9 +20,6 @@ namespace El_Sabroso_App.CapaPresentacion
 
        
 
-        
-
-
         public bool ValidarCredenciales(string pUsuario, string pPassword)
         {
             //Inicializamos la variable usuarioValido en false, para que solo si el usuario es valido retorne true
