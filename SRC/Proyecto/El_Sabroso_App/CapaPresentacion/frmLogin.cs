@@ -127,5 +127,10 @@ namespace El_Sabroso_App.CapaPresentacion
                 txtPswd.UseSystemPasswordChar = true;
             }
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
