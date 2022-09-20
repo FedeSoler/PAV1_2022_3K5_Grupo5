@@ -36,6 +36,7 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.MostrarPass = new System.Windows.Forms.CheckBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -103,12 +104,25 @@
             this.MostrarPass.UseVisualStyleBackColor = true;
             this.MostrarPass.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(156, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 16);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Iniciar Sesión";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(385, 179);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.MostrarPass);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
@@ -139,5 +153,6 @@
         private Button btnIngresar;
         private Button btnSalir;
         private CheckBox MostrarPass;
+        private Label label3;
     }
 }
