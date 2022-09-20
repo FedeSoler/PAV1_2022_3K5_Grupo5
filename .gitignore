@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/SRC/Proyecto/El_Sabroso_App/.vs/El_Sabroso_App/FileContentIndex/3d1cffd2-0bc6-4d2f-bdd7-33b76695d7f0.vsidx
+/SRC/Proyecto/El_Sabroso_App/.vs/El_Sabroso_App/FileContentIndex/50901e56-3c69-47dc-8f53-52b9143c4ef5.vsidx
+/SRC/Proyecto/El_Sabroso_App/.vs/El_Sabroso_App/FileContentIndex/98c7ce7e-380d-4711-b46d-f32703c6f16a.vsidx
+/SRC/Proyecto/El_Sabroso_App/.vs/El_Sabroso_App/FileContentIndex/cd661fb7-27de-453e-a1f3-d3b9ed63e87f.vsidx
+/SRC/Proyecto/El_Sabroso_App/obj/Debug/net6.0-windows/TempPE
+/SRC/Proyecto/El_Sabroso_App/.vs/El_Sabroso_App/FileContentIndex/*
+/SRC/Proyecto/El_Sabroso_App/obj/*
+/SRC/Proyecto/El_Sabroso_App/bin/*
+/SRC/Proyecto/El_Sabroso_App/.vs/*
