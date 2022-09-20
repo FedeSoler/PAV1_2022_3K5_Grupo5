@@ -32,11 +32,6 @@
             this.btnConsultar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgbProductos = new System.Windows.Forms.DataGridView();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colActivo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +40,11 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblProducto = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgbProductos)).BeginInit();
             this.SuspendLayout();
@@ -90,31 +90,6 @@
             this.dgbProductos.Size = new System.Drawing.Size(592, 192);
             this.dgbProductos.TabIndex = 4;
             this.dgbProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // colNombre
-            // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Descripcion";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            // 
-            // colProveedor
-            // 
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
-            // 
-            // colActivo
-            // 
-            this.colActivo.HeaderText = "Activo";
-            this.colActivo.Name = "colActivo";
             // 
             // chkActivo
             // 
@@ -195,6 +170,33 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            // 
+            // colActivo
+            // 
+            this.colActivo.HeaderText = "Activo";
+            this.colActivo.Name = "colActivo";
+            this.colActivo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colActivo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // FrmConsultarProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -231,11 +233,11 @@
         private Button btnEliminar;
         private Button btnSalir;
         private Label lblProducto;
+        private Button btnNuevo;
         private DataGridViewTextBoxColumn colNombre;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private DataGridViewTextBoxColumn colPrecio;
         private DataGridViewTextBoxColumn colProveedor;
-        private DataGridViewTextBoxColumn colActivo;
-        private Button btnNuevo;
+        private DataGridViewCheckBoxColumn colActivo;
     }
 }
