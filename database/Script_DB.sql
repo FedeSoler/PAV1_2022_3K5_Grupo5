@@ -255,15 +255,6 @@ VALUES
 
 
 
-select * from dbo.PRODUCTOS
-select * from dbo.PROVEEDORES
-
-SELECT P.nombre as "Nombre producto" ,C.nombre As "Nombre proveedor"
-from PRODUCTOS P
-Left Join PROVEEDORES C
-on P.Id_proveedor = C.Id_proveedor;
-
-
 
 INSERT INTO dbo.USUARIOS (Id_usuario,Id_permiso,usuario,password,email,activo)
 VALUES
