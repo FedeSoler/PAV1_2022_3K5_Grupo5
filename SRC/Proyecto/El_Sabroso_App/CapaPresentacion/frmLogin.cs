@@ -66,6 +66,8 @@ namespace El_Sabroso_App.CapaPresentacion
         private void frmLogin_Load(object sender, EventArgs e)
         {
             this.CenterToParent();
+            ControlBox = false;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -114,6 +116,19 @@ namespace El_Sabroso_App.CapaPresentacion
 
             // Terminamos la aplicacion dado que el usuario no inicio sesion.
             Environment.Exit(0);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(MostrarPass.Checked == true)
+            {
+                txtPswd.UseSystemPasswordChar = false;
+
+            }
+            else
+            {
+                txtPswd.UseSystemPasswordChar = true;
+            }
         }
     }
 }

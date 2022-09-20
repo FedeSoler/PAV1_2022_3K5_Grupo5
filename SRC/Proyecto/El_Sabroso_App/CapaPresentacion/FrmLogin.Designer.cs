@@ -35,6 +35,7 @@
             this.txtPswd = new System.Windows.Forms.TextBox();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.MostrarPass = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -69,6 +70,7 @@
             this.txtPswd.Name = "txtPswd";
             this.txtPswd.Size = new System.Drawing.Size(197, 23);
             this.txtPswd.TabIndex = 3;
+            this.txtPswd.UseSystemPasswordChar = true;
             // 
             // btnIngresar
             // 
@@ -90,12 +92,24 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click_1);
             // 
+            // MostrarPass
+            // 
+            this.MostrarPass.AutoSize = true;
+            this.MostrarPass.Location = new System.Drawing.Point(117, 106);
+            this.MostrarPass.Name = "MostrarPass";
+            this.MostrarPass.Size = new System.Drawing.Size(130, 19);
+            this.MostrarPass.TabIndex = 6;
+            this.MostrarPass.Text = "Mostrar Contraseña";
+            this.MostrarPass.UseVisualStyleBackColor = true;
+            this.MostrarPass.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(385, 179);
+            this.Controls.Add(this.MostrarPass);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.txtPswd);
@@ -124,5 +138,6 @@
         private TextBox txtPswd;
         private Button btnIngresar;
         private Button btnSalir;
+        private CheckBox MostrarPass;
     }
 }
