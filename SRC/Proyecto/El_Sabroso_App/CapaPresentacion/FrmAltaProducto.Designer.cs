@@ -30,11 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAltaProducto));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboCategoria = new System.Windows.Forms.ComboBox();
             this.comboProveedor = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtCategoria = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.checkActivo = new System.Windows.Forms.CheckBox();
             this.nudPrecio = new System.Windows.Forms.NumericUpDown();
@@ -49,11 +49,11 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.comboCategoria);
             this.groupBox1.Controls.Add(this.comboProveedor);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtDescripcion);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtCategoria);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.checkActivo);
             this.groupBox1.Controls.Add(this.nudPrecio);
@@ -67,6 +67,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos de producto";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // comboCategoria
+            // 
+            this.comboCategoria.FormattingEnabled = true;
+            this.comboCategoria.Location = new System.Drawing.Point(105, 64);
+            this.comboCategoria.Name = "comboCategoria";
+            this.comboCategoria.Size = new System.Drawing.Size(155, 23);
+            this.comboCategoria.TabIndex = 11;
+            this.comboCategoria.SelectedIndexChanged += new System.EventHandler(this.comboCategoria_SelectedIndexChanged);
             // 
             // comboProveedor
             // 
@@ -103,14 +112,6 @@
             this.label4.Size = new System.Drawing.Size(72, 15);
             this.label4.TabIndex = 7;
             this.label4.Text = "Descripción:";
-            // 
-            // txtCategoria
-            // 
-            this.txtCategoria.Location = new System.Drawing.Point(106, 64);
-            this.txtCategoria.Name = "txtCategoria";
-            this.txtCategoria.Size = new System.Drawing.Size(265, 23);
-            this.txtCategoria.TabIndex = 6;
-            this.txtCategoria.TextChanged += new System.EventHandler(this.txtCategoria_TextChanged);
             // 
             // label3
             // 
@@ -215,7 +216,6 @@
         private Label label5;
         private TextBox txtDescripcion;
         private Label label4;
-        private TextBox txtCategoria;
         private Label label3;
         private CheckBox checkActivo;
         private NumericUpDown nudPrecio;
@@ -225,5 +225,6 @@
         private Button button1;
         private Button BtnCancelar;
         private ComboBox comboProveedor;
+        private ComboBox comboCategoria;
     }
 }
