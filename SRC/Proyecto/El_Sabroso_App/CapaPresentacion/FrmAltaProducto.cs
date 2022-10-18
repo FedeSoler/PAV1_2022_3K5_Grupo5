@@ -63,13 +63,6 @@ namespace El_Sabroso_App.CapaPresentacion
             
             }
 
-
-            if (String.IsNullOrEmpty(txtCategoria.Text))
-            {
-                MessageBox.Show("Campo Categoría es requerido", "Validaciones", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-
-            }
          
             if (checkActivo.Checked)
             {
@@ -95,13 +88,13 @@ namespace El_Sabroso_App.CapaPresentacion
             {
                     
                 String consultaSql = string.Concat(" INSERT INTO PRODUCTOS " +
-                "(nombre,descripcion,categoria,precio,id_proveedor,activo) " +
+                "(nombre,descripcion,precio,id_proveedor,activo,id_categoria) " +
                 "VALUES ('" + txtNombre.Text + "'," +
                 "'" + txtDescripcion.Text + "'" +
-                ",'" + txtCategoria.Text + "'" +
                 ",'" + nudPrecio.Value + "'" +
                 ",'" + comboProveedor.SelectedValue + "'" +
-                ",'" + estado + "')");
+                ",'" + estado + "'" +
+                ",'" + comboCategoria.SelectedValue + "')");
 
                 DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
                 MessageBox.Show("Producto ingresado exitosamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -109,7 +102,6 @@ namespace El_Sabroso_App.CapaPresentacion
                 resultado.Clear();
                 txtNombre.Clear();
                 txtDescripcion.Clear();
-                txtCategoria.Clear();
                 nudPrecio.Value = 0;
                 checkActivo.Checked = false;
 
@@ -132,6 +124,20 @@ namespace El_Sabroso_App.CapaPresentacion
 
             
         }
+
+        private void cargarComboCategoria()
+        {
+            String consultaSql = string.Concat("" +
+                "SELECT * from CATEGORIAS_PROD ");
+
+            DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
+            comboCategoria.DataSource = resultado;
+            comboCategoria.DisplayMember = "nombre";
+            comboCategoria.ValueMember = "id_categoria";
+
+        }
+
+
 
 
         public bool ValidarProducto(String txtNombre)
@@ -198,6 +204,7 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void FrmAltaProducto_Load(object sender, EventArgs e)
         {
+            cargarComboCategoria();
             cargarComboProveedores();
 
         }
@@ -223,17 +230,7 @@ namespace El_Sabroso_App.CapaPresentacion
 
         }
 
-        private void txtCategoria_TextChanged(object sender, EventArgs e)
-        {
-            txtCategoria.Text = txtCategoria.Text.ToString();
-
-            if (txtCategoria.Text.Length > 50)
-            {
-                MessageBox.Show("Has ingresado demasiados caracteres.");
-
-            }
-        }
-
+       
         private void txtDescripcion_TextChanged(object sender, EventArgs e)
         {
             txtDescripcion.Text = txtDescripcion.Text.ToString();
@@ -243,6 +240,11 @@ namespace El_Sabroso_App.CapaPresentacion
                 MessageBox.Show("Has ingresado demasiados caracteres.");
 
             }
+        }
+
+        private void comboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 
