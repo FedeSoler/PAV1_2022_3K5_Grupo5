@@ -18,7 +18,7 @@ namespace El_Sabroso_App.CapaPresentacion
             InitializeComponent();
         }
 
-       
+        public static String Nombre = "";
 
         public bool ValidarCredenciales(string pUsuario, string pPassword)
         {
@@ -131,6 +131,11 @@ namespace El_Sabroso_App.CapaPresentacion
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public string retornarNombre()
+        {
+            return Nombre = txtUsuario.Text;
         }
     }
 }

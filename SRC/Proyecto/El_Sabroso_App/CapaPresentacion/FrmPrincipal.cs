@@ -27,6 +27,7 @@ namespace El_Sabroso_App.CapaPresentacion
             this.WindowState = FormWindowState.Maximized;
             frmLogin Login = new frmLogin();
             Login.ShowDialog();
+            lblUsuario.Text = "Usuario: " + Login.retornarNombre();
         }
 
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)

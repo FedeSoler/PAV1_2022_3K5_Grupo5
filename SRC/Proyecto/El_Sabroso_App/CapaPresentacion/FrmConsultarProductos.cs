@@ -96,10 +96,22 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            
+            DataGridViewRow fila = dgbProductos.CurrentRow;
+            if (fila != null)
+            {
+                new FrmAltaProducto(2, mapper(fila)).ShowDialog();
+                this.button1_Click(null, null);
+            }
         }
 
-   
+        private Producto mapper(DataGridViewRow fila)
+        {
+            Producto oSeleted = new Producto();
+            oSeleted.Nombre = fila.Cells["Colnombre"].Value.ToString();
+            oSeleted.Activo = (bool)fila.Cells["colActivo"].Value;
+            return oSeleted;
+        }
+
 
 
         private void btnEliminar_Click(object sender, EventArgs e)
