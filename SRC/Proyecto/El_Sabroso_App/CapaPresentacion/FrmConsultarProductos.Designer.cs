@@ -32,6 +32,11 @@
             this.btnConsultar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgbProductos = new System.Windows.Forms.DataGridView();
+            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.chkActivo = new System.Windows.Forms.CheckBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,11 +45,7 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.lblProducto = new System.Windows.Forms.Label();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.colNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colActivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgbProductos)).BeginInit();
             this.SuspendLayout();
@@ -83,13 +84,41 @@
             this.dataGridViewTextBoxColumn1,
             this.colPrecio,
             this.colProveedor,
-            this.colActivo});
+            this.colActivo,
+            this.Id});
             this.dgbProductos.Location = new System.Drawing.Point(6, 96);
             this.dgbProductos.Name = "dgbProductos";
             this.dgbProductos.RowTemplate.Height = 25;
             this.dgbProductos.Size = new System.Drawing.Size(592, 192);
             this.dgbProductos.TabIndex = 4;
             this.dgbProductos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // colNombre
+            // 
+            this.colNombre.HeaderText = "Nombre";
+            this.colNombre.Name = "colNombre";
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // colPrecio
+            // 
+            this.colPrecio.HeaderText = "Precio";
+            this.colPrecio.Name = "colPrecio";
+            // 
+            // colProveedor
+            // 
+            this.colProveedor.HeaderText = "Proveedor";
+            this.colProveedor.Name = "colProveedor";
+            // 
+            // colActivo
+            // 
+            this.colActivo.HeaderText = "Activo";
+            this.colActivo.Name = "colActivo";
+            this.colActivo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colActivo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // chkActivo
             // 
@@ -170,32 +199,10 @@
             this.btnNuevo.UseVisualStyleBackColor = true;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
-            // colNombre
+            // Id
             // 
-            this.colNombre.HeaderText = "Nombre";
-            this.colNombre.Name = "colNombre";
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Descripcion";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // colPrecio
-            // 
-            this.colPrecio.HeaderText = "Precio";
-            this.colPrecio.Name = "colPrecio";
-            // 
-            // colProveedor
-            // 
-            this.colProveedor.HeaderText = "Proveedor";
-            this.colProveedor.Name = "colProveedor";
-            // 
-            // colActivo
-            // 
-            this.colActivo.HeaderText = "Activo";
-            this.colActivo.Name = "colActivo";
-            this.colActivo.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colActivo.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
             // 
             // FrmConsultarProductos
             // 
@@ -239,5 +246,6 @@
         private DataGridViewTextBoxColumn colPrecio;
         private DataGridViewTextBoxColumn colProveedor;
         private DataGridViewCheckBoxColumn colActivo;
+        private DataGridViewTextBoxColumn Id;
     }
 }

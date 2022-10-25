@@ -31,7 +31,13 @@ namespace El_Sabroso_App.CapaPresentacion
             this.oProducto = oProducto;
 
         }
-
+        public enum FormMode
+        {
+            nuevo,
+            actualizar,
+            eliminar
+                //codigo
+        }
         public FrmAltaProducto(int v, FrmAltaProducto alta_Producto)
         {
             this.v = v;
