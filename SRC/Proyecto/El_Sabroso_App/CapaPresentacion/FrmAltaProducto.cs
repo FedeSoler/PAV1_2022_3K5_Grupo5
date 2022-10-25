@@ -21,7 +21,8 @@ namespace El_Sabroso_App.CapaPresentacion
         private Producto producto;
         private Producto oProducto;
         private string estado;
-
+        private FormMode formMode;
+        private Producto oProductoSelected;
 
 
         public FrmAltaProducto(int accion,Producto oProducto)
@@ -131,6 +132,18 @@ namespace El_Sabroso_App.CapaPresentacion
             
         }
 
+        private void MostrarDatos()
+        {
+            if (oProductoSelected != null)
+            {
+                txtNombre.Text = oProductoSelected.Nombre;
+                comboCategoria.Text = oProductoSelected.Categoria.Nombre;
+                txtDescripcion.Text = oProductoSelected.Descripcion;
+                comboProveedor.Text = oProductoSelected.Proveedor.Nombre;
+                Int32 nudPrecio = oProductoSelected.Precio;
+            }
+        }
+
         private void cargarComboCategoria()
         {
             String consultaSql = string.Concat("" +
@@ -144,7 +157,7 @@ namespace El_Sabroso_App.CapaPresentacion
         }
 
 
-
+     
 
         public bool ValidarProducto(String txtNombre)
         {
@@ -212,9 +225,27 @@ namespace El_Sabroso_App.CapaPresentacion
         {
             cargarComboCategoria();
             cargarComboProveedores();
+            switch (formMode)
+            {
+                case FormMode.actualizar:
+                    {
+                        this.Text = "Actualizar Usuario";
+                        MostrarDatos();
+                        txtNombre.Enabled = true;
+                        comboCategoria.Enabled = true;
+                        txtDescripcion.Enabled = true;
+                        comboProveedor.Enabled = true;
+                        nudPrecio.Enabled = true;
+                        break;
+                    }
+            }
 
         }
-
+        public void InicializarFormulario(FormMode op, Producto productoSelected = null)
+        {
+            formMode = op;
+            oProductoSelected = productoSelected;
+        }
         private void label3_Click(object sender, EventArgs e)
         {
 
