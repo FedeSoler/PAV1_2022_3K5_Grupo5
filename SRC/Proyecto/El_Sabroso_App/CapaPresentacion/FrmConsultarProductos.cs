@@ -28,8 +28,14 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ConsultarProductos();
 
 
+
+
+        }
+        private void ConsultarProductos()
+        {
             //Construimos la consulta sql para buscar el usuario en la base de datos.
             String consultaSql = string.Concat(" SELECT P.*, Pro.nombre ",
                                                    "   FROM PRODUCTOS P ",
@@ -38,32 +44,32 @@ namespace El_Sabroso_App.CapaPresentacion
 
 
             if (!string.IsNullOrEmpty(txtNombre.Text))
-                {
-                    consultaSql += " AND P.nombre LIKE '%" + txtNombre.Text + "%'";
-                }
-                if (chkActivo.Checked)
-                {
-                    consultaSql += " AND P.activo = 'S'";
-                }
-                else
-                {
-                    consultaSql += " AND P.activo = 'N'";
-                    
+            {
+                consultaSql += " AND P.nombre LIKE '%" + txtNombre.Text + "%'";
+            }
+            if (chkActivo.Checked)
+            {
+                consultaSql += " AND P.activo = 'S'";
+            }
+            else
+            {
+                consultaSql += " AND P.activo = 'N'";
 
-                }
+
+            }
             //Usando el método GetDBHelper obtenemos la instancia unica de DBHelper (Patrón Singleton) y ejecutamos el método ConsultaSQL()
-            
+
             DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
             dgbProductos.Rows.Clear();
-                
-            if ( resultado.Rows.Count > 0)
+
+            if (resultado.Rows.Count > 0)
             {
                 foreach (DataRow fila in resultado.Rows)
                 {
                     bool activo = fila["activo"].ToString().Equals("S");
 
                     int id = (int)fila["Id_producto"];
-                    dgbProductos.Rows.Add(new object[] { fila["nombre"].ToString(), fila["Descripcion"], fila["Precio"], fila["nombre1"]/*aca es el proveedor*/, activo });
+                    dgbProductos.Rows.Add(new object[] { fila["nombre"].ToString(), fila["Descripcion"], fila["Precio"], fila["nombre1"]/*aca es el proveedor*/, activo, fila["Id_producto"].ToString() });
                 }
                 habilitarControles(true);
             }
@@ -72,7 +78,7 @@ namespace El_Sabroso_App.CapaPresentacion
                 habilitarControles(false);
             }
             // desactivar botones eliminar y editar si no se elige estado activo
-           if ( resultado.Rows.Count > 0)
+            if (resultado.Rows.Count > 0)
             {
                 if (!chkActivo.Checked)
                 {
@@ -81,7 +87,6 @@ namespace El_Sabroso_App.CapaPresentacion
 
             }
             lblProducto.Text = "Total Registros: " + Convert.ToString(dgbProductos.Rows.Count);
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -116,9 +121,38 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            eliminarProducto();
+            ConsultarProductos();
+            
+
 
         }
 
+
+        private void eliminarProducto()
+        {
+            int? id = obtenerId();
+            //MessageBox.Show("se obtuvo el valor  ", id.ToString());
+            String deleteSQL = string.Concat("  update  PRODUCTOS  " +
+                " set  activo = 'N' " +
+                " where Id_producto = " + id);
+
+            DataTable resultado = DataManager.GetInstance().ConsultaSQL(deleteSQL);
+        }
+
+        private int? obtenerId()
+        {
+            try
+            {
+                int id = Int32.Parse(dgbProductos.Rows[dgbProductos.CurrentRow.Index].Cells[5].Value.ToString());
+                return id;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
