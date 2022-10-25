@@ -56,5 +56,11 @@ namespace El_Sabroso_App.CapaPresentacion
             FrmConsultarProductos consulta = new FrmConsultarProductos();
             consulta.ShowDialog();
         }
+
+        private void nuevaVentaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmVentas Venta = new FrmVentas();
+            Venta.ShowDialog();
+        }
     }
 }

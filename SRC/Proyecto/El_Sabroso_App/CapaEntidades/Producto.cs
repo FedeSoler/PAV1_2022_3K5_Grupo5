@@ -17,7 +17,7 @@ namespace El_Sabroso_App.CapaEntidades
 
         public int Precio { get; set; }
 
-        public string Categoria { get; set; }   
+        public Categoria Categoria { get; set; }   
 
         public bool Activo  { get; set; }
 
@@ -25,8 +25,8 @@ namespace El_Sabroso_App.CapaEntidades
 
         public int IdProveedor { get; set; }
 
-
-        public Producto(int idProducto, string nombre, string descripcion, int precio, string categoria, bool activo, int idProveedor)
+        public Proveedor Proveedor{ get; set; }
+        public Producto(int idProducto, string nombre, string descripcion, int precio, Categoria categoria, bool activo, int idProveedor, Proveedor Proveedor)
         {
             IdProducto = idProducto;
             Nombre = nombre;
@@ -35,6 +35,8 @@ namespace El_Sabroso_App.CapaEntidades
             Categoria = categoria;
             Activo = true;
             IdProveedor = idProveedor;
+            Proveedor = Proveedor;
+            
         }
 
         public Producto() 
