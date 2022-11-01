@@ -49,7 +49,7 @@
             this.TelefonoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -71,6 +71,7 @@
             this.comboProducto.Name = "comboProducto";
             this.comboProducto.Size = new System.Drawing.Size(121, 23);
             this.comboProducto.TabIndex = 1;
+            this.comboProducto.SelectedIndexChanged += new System.EventHandler(this.comboProducto_SelectedIndexChanged);
             // 
             // Producto
             // 
@@ -172,7 +173,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(6, 124);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(779, 272);
+            this.dataGridView1.Size = new System.Drawing.Size(789, 272);
             this.dataGridView1.TabIndex = 12;
             // 
             // nombreProducto
@@ -224,12 +225,12 @@
             this.label5.TabIndex = 13;
             this.label5.Text = "Nombre Cliente:";
             // 
-            // textBox1
+            // txtNombreCliente
             // 
-            this.textBox1.Location = new System.Drawing.Point(322, 6);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(159, 23);
-            this.textBox1.TabIndex = 14;
+            this.txtNombreCliente.Location = new System.Drawing.Point(322, 6);
+            this.txtNombreCliente.Name = "txtNombreCliente";
+            this.txtNombreCliente.Size = new System.Drawing.Size(159, 23);
+            this.txtNombreCliente.TabIndex = 14;
             // 
             // textBox2
             // 
@@ -329,7 +330,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNombreCliente);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
@@ -367,7 +368,7 @@
         private Label label4;
         private DataGridView dataGridView1;
         private Label label5;
-        private TextBox textBox1;
+        private TextBox txtNombreCliente;
         private TextBox textBox2;
         private Label label6;
         private TextBox textBox3;
