@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmVentas));
             this.comboProducto = new System.Windows.Forms.ComboBox();
             this.Producto = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -347,7 +348,9 @@
             this.Controls.Add(this.comboCategoria);
             this.Controls.Add(this.Producto);
             this.Controls.Add(this.comboProducto);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmVentas";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventas";
             this.Load += new System.EventHandler(this.FrmVentas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.CantProd)).EndInit();
