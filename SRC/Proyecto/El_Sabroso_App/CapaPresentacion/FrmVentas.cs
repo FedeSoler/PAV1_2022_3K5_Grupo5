@@ -112,6 +112,20 @@ namespace El_Sabroso_App.CapaPresentacion
                 return;
             }
 
+            //controla que no ingrese dos veces el mismo dato en la gridviwv intermedia
+            if ((dataGridView1.RowCount - 1) > 0)
+            {
+                foreach (DataGridViewRow item in dataGridView1.Rows)
+                {
+                    if (item.Cells[1].Value != null && item.Cells[0].Value.ToString() == comboProducto.SelectedValue.ToString())
+                    {
+
+                        MessageBox.Show("Ya se agrego este servicio");
+                        return;
+                    }
+                }
+            }
+
             dataGridView1.Rows.Add(comboProducto.Text, comboProveedor.Text, comboCategoria.Text, CantProd.Value, txtNombreCliente.Text, textBox2.Text, textBox4.Text, textBox3.Text);
             // int a = Int32.Parse(MontoTotal.Text);
             int resultado = 0;
@@ -119,17 +133,13 @@ namespace El_Sabroso_App.CapaPresentacion
             
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
-
-                if (row.Cells[3] != null)
+                if (row.Cells[3].Value != null)
                 {
-                    int a = Int32.Parse(row.Cells[3].Value.ToString());
+                    int a = Int32.Parse(row.Cells[3].Value.ToString()); //cantidad
                     DataTable tabla = cargarTabla(row.Cells[0].Value.ToString());
                     int b = Int32.Parse(tabla.Rows[0][2].ToString());
                     resultado += a * b;
-
                 }
-              
-
             }
             MontoTotal.Text = resultado.ToString();
 
@@ -218,23 +228,23 @@ namespace El_Sabroso_App.CapaPresentacion
             {
                 SqlCommand cmd = new SqlCommand();
                 string consulta = "INSERT INTO[dbo].[VENTAS]" +
-           "([Id_venta]" +
-           ",[fecha]"+
-           ",[monto]"+
-           ",[nombre_cliente]"+
-           ",[apellido_cliente]"+
-           ",[email_cliente]" +
-           ",[telefono_cliente]" +
-     "VALUES" +
-           ",@fecha" +
-           ",@monto" +
-           ",@nombreCliente" +
-           ",@ApellidoCliente" +
-           ",@emailCliente" +
-           ",@telefono";
+                                    "([Id_venta]" +
+                                    ",[fecha]"+
+                                    ",[monto]"+
+                                    ",[nombre_cliente]"+
+                                    ",[apellido_cliente]"+
+                                    ",[email_cliente]" +
+                                    ",[telefono_cliente]" +
+                                 "VALUES" +
+                                    ",@fecha" +
+                                     ",@monto" +
+                                    ",@nombreCliente" +
+                                    ",@ApellidoCliente" +
+                                    ",@emailCliente" +
+                                    ",@telefono";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                cmd.Parameters.AddWithValue("@monto", MontoTotal.Text);
+                cmd.Parameters.AddWithValue("@monto", 2);
                 cmd.Parameters.AddWithValue("@ApellidoCliente", textBox2.Text);
                 cmd.Parameters.AddWithValue("@emailCliente", textBox3.Text);
                 cmd.Parameters.AddWithValue("@nombreCliente",(txtNombreCliente.Text));
@@ -243,44 +253,33 @@ namespace El_Sabroso_App.CapaPresentacion
                 cmd.CommandText = consulta;
 
                 cn.Open();
-                objTransaction = cn.BeginTransaction("serviciosXcontrato");
+                objTransaction = cn.BeginTransaction("ventas");
                 
                 cmd.Transaction = objTransaction;
                 cmd.Connection = cn;
                 cmd.ExecuteNonQuery();
-                int numerofactura = buscar_numfactura();
-                foreach (DataGridViewRow item in dgvAsignar.Rows)
+                int numerofactura = buscar_venta();
+                foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
                     if(item.Cells[1].Value == null){ break; }
-                    string consultaserviciosxcliente = "INSERT INTO[dbo].[Servicios_Contratados]"
-                                                       + "([nro_telefono]"
-                                                     + ",[fecha_desde]"
-                                                     + ",[fecha_hasta]"
-                                                     + ",[id_servicio])"
-                                             + "VALUES"
-                                                + "(@numeroteledono"
-                                               + ", @datedesde"
-                                                + ", @datehasta"
-                                                + ", @idservicio)";
+                    string consultaDetalleFactura = "INSERT INTO [dbo].[CATEGORIAS_PROD]"
+                                                        +"([Id_venta]"
+                                                        +",[cantidad])"
+                                                        +",[Id_proveedor])"
+                                                        + ",[id_categoria])"
+                                                        + ",[Id_producto])"
+                                                     + "VALUES"
+                                                       +"(@idventa "
+                                                        +",@cantidad"
+                                                        + ",@id_proveedor"
+                                                        + ",@categoria"
+                                                        + ",@id_producto)";
                     cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@numeroteledono", int.Parse(item.Cells[0].Value.ToString()));
-                    cmd.Parameters.AddWithValue("@datedesde", DateTime.Now);
-                    cmd.Parameters.AddWithValue("@datehasta", item.Cells[2].Value);
-                    cmd.Parameters.AddWithValue("@idservicio", Int32.Parse(item.Cells[1].Value.ToString()));
-                    cmd.CommandType = CommandType.Text;
-
-                    cmd.CommandText = consultaserviciosxcliente;
-                    cmd.ExecuteNonQuery();
-
-                    string consultaDetalleFactura = "INSERT INTO[dbo].[Detalle_factura_servicios]"
-                                                                + "([nrofactura]"
-                                                                + ",[id_servicios_contratados])"
-                                                            + "VALUES"
-                                                                + "(@numerofactura "
-                                                                + ", @id_servicio )";
-                    cmd.Parameters.Clear();
-                    cmd.Parameters.AddWithValue("@numerofactura", numerofactura);
-                    cmd.Parameters.AddWithValue("@id_servicio", Int32.Parse(item.Cells[1].Value.ToString()));
+                    cmd.Parameters.AddWithValue("@idventa", numerofactura);
+                    cmd.Parameters.AddWithValue("@cantidad", Decimal.ToInt32(CantProd.Value));
+                    cmd.Parameters.AddWithValue("@id_proveedor", comboProveedor.SelectedValue);
+                    cmd.Parameters.AddWithValue("@categoria", comboCategoria.SelectedValue);
+                    cmd.Parameters.AddWithValue("@id_producto", comboProducto.SelectedValue);
                     cmd.CommandType = CommandType.Text;
 
                     cmd.CommandText = consultaDetalleFactura;
@@ -288,7 +287,7 @@ namespace El_Sabroso_App.CapaPresentacion
                     
                 }
                 objTransaction.Commit();
-                MessageBox.Show("Se genero la la factura con sus detalles");
+                MessageBox.Show("Se genero la venta con sus detalles");
 
             }
             catch (Exception)
@@ -301,6 +300,36 @@ namespace El_Sabroso_App.CapaPresentacion
 
 
 
+        }
+
+        private int buscar_venta()
+        {
+            bool vandera = false;
+            string cadenaConexion = System.Configuration.ConfigurationManager.AppSettings["CadenaBD"];
+            SqlConnection cn = new SqlConnection(cadenaConexion);
+            try
+            {
+                SqlCommand cmd = new SqlCommand();
+                string consulta = "Select IDENT_CURRENT('Ventas') as 'venta'";
+                cmd.Parameters.Clear();
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = consulta;
+                cn.Open();
+                cmd.Connection = cn;
+                cmd.ExecuteNonQuery();
+                DataTable tabla = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(tabla);
+                if (tabla.Rows.Count > 0) { return Int32.Parse(tabla.Rows[0]["venta"].ToString()); }
+                else { return 0; }
+
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }
