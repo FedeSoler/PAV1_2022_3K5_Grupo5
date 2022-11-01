@@ -98,6 +98,7 @@
             this.comboCategoria.Name = "comboCategoria";
             this.comboCategoria.Size = new System.Drawing.Size(121, 23);
             this.comboCategoria.TabIndex = 3;
+            this.comboCategoria.SelectedIndexChanged += new System.EventHandler(this.comboCategoria_SelectedIndexChanged);
             // 
             // dateTimePicker1
             // 
@@ -297,6 +298,7 @@
             this.button3.TabIndex = 22;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label9
             // 
@@ -314,6 +316,7 @@
             this.comboProveedor.Name = "comboProveedor";
             this.comboProveedor.Size = new System.Drawing.Size(121, 23);
             this.comboProveedor.TabIndex = 23;
+            this.comboProveedor.SelectedIndexChanged += new System.EventHandler(this.comboProveedor_SelectedIndexChanged);
             // 
             // FrmVentas
             // 
