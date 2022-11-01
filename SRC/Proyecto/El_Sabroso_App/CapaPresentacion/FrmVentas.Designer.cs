@@ -40,6 +40,14 @@
             this.MontoTotal = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApellidoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TelefonoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -52,14 +60,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.comboProveedor = new System.Windows.Forms.ComboBox();
-            this.nombreProducto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreProveedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nombreCategoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApellidoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TelefonoCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.CantProd)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -139,6 +139,7 @@
             this.button1.TabIndex = 9;
             this.button1.Text = "Agregar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // MontoTotal
             // 
@@ -173,6 +174,46 @@
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(779, 272);
             this.dataGridView1.TabIndex = 12;
+            // 
+            // nombreProducto
+            // 
+            this.nombreProducto.HeaderText = "Producto";
+            this.nombreProducto.Name = "nombreProducto";
+            // 
+            // nombreProveedor
+            // 
+            this.nombreProveedor.HeaderText = "Proveedor";
+            this.nombreProveedor.Name = "nombreProveedor";
+            // 
+            // nombreCategoria
+            // 
+            this.nombreCategoria.HeaderText = "Categoria";
+            this.nombreCategoria.Name = "nombreCategoria";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Cliente
+            // 
+            this.Cliente.HeaderText = "Cliente";
+            this.Cliente.Name = "Cliente";
+            // 
+            // ApellidoCliente
+            // 
+            this.ApellidoCliente.HeaderText = "ApellidoCliente";
+            this.ApellidoCliente.Name = "ApellidoCliente";
+            // 
+            // TelefonoCliente
+            // 
+            this.TelefonoCliente.HeaderText = "Telefono";
+            this.TelefonoCliente.Name = "TelefonoCliente";
+            // 
+            // Mail
+            // 
+            this.Mail.HeaderText = "Mail";
+            this.Mail.Name = "Mail";
             // 
             // label5
             // 
@@ -272,46 +313,6 @@
             this.comboProveedor.Name = "comboProveedor";
             this.comboProveedor.Size = new System.Drawing.Size(121, 23);
             this.comboProveedor.TabIndex = 23;
-            // 
-            // nombreProducto
-            // 
-            this.nombreProducto.HeaderText = "Producto";
-            this.nombreProducto.Name = "nombreProducto";
-            // 
-            // nombreProveedor
-            // 
-            this.nombreProveedor.HeaderText = "Proveedor";
-            this.nombreProveedor.Name = "nombreProveedor";
-            // 
-            // nombreCategoria
-            // 
-            this.nombreCategoria.HeaderText = "Categoria";
-            this.nombreCategoria.Name = "nombreCategoria";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Cliente
-            // 
-            this.Cliente.HeaderText = "Cliente";
-            this.Cliente.Name = "Cliente";
-            // 
-            // ApellidoCliente
-            // 
-            this.ApellidoCliente.HeaderText = "ApellidoCliente";
-            this.ApellidoCliente.Name = "ApellidoCliente";
-            // 
-            // TelefonoCliente
-            // 
-            this.TelefonoCliente.HeaderText = "Telefono";
-            this.TelefonoCliente.Name = "TelefonoCliente";
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.Name = "Mail";
             // 
             // FrmVentas
             // 
