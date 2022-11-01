@@ -109,6 +109,21 @@ SET ANSI_NULLS ON
 GO
 
 
+CREATE TABLE [dbo].[DETALLE_VENTAS](
+    [detalle_nro] [int] IDENTITY (1,1) NOT NULL,
+    [Id_venta] [int] NULL,
+    [cantidad] [varchar](50) NULL,
+	[Id_proveedor] int null,
+	[id_categoria] int null,
+    [Id_producto] [int] NULL,
+	PRIMARY KEY ([detalle_nro]),
+	FOREIGN KEY ([Id_venta]) REFERENCES dbo.VENTAS(Id_venta),
+	FOREIGN KEY (Id_producto) REFERENCES dbo.PRODUCTOS(Id_producto),
+	FOREIGN KEY (id_categoria) REFERENCES dbo.CATEGORIAS_PROD(id_categoria),
+	FOREIGN KEY (Id_proveedor) REFERENCES dbo.PROVEEDORES(Id_proveedor))
+
+
+
 
 SET QUOTED_IDENTIFIER ON
 GO
