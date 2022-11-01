@@ -21,6 +21,7 @@ namespace El_Sabroso_App.CapaPresentacion
         {
             cargarComboCategoria();
             cargarComboProveedores();
+            cargarComboProductos();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -52,6 +53,35 @@ namespace El_Sabroso_App.CapaPresentacion
             comboProveedor.ValueMember = "Id_proveedor";
 
 
+        }
+        private void cargarComboProductos()
+        {
+
+            String consultaSql = string.Concat("" +
+                "SELECT * from PRODUCTOS ");
+
+            DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
+            comboProducto.DataSource = resultado;
+            comboProducto.DisplayMember = "nombre";
+            comboProducto.ValueMember = "Id_Proveedor";
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if (comboProducto.Text.Trim() == "")
+            {
+                MessageBox.Show("Se debe ingresar un producto");
+                return;
+            }
+
+            if (CantProd.Value == 0)
+            {
+                MessageBox.Show("Se debe ingresar una cantidad mayor a 0");
+                return;
+            }
         }
     }
 }
