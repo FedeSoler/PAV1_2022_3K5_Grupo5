@@ -1,11 +1,7 @@
 CREATE DATABASE El_Sabroso_DB
 
-
-
-
 USE [El_Sabroso_DB]
 GO
-
 
 
 /** Object:  Table [dbo].[PERMISOS]    Script Date: 9/11/2022 10:15:25 PM **/
@@ -13,10 +9,8 @@ SET ANSI_NULLS ON
 GO
 
 
-
 SET QUOTED_IDENTIFIER ON
 GO
-
 
 
 CREATE TABLE [dbo].[PERMISOS](
@@ -56,7 +50,7 @@ CREATE TABLE [dbo].[PRODUCTOS](
     [nombre] [varchar](250) NULL,
     [descripcion] [varchar](250) NULL,
     [precio] [float] NULL,
-    [categoria] [varchar](50) NULL,
+    [id_categoria] [varchar](50) NULL,
     [id_proveedor] [int] NULL,
 	[activo] [varchar](1) NULL,
 	FOREIGN KEY (Id_proveedor) REFERENCES dbo.PROVEEDORES(Id_proveedor),
@@ -109,19 +103,38 @@ SET ANSI_NULLS ON
 GO
 
 
-CREATE TABLE [dbo].[DETALLE_VENTAS](
-    [detalle_nro] [int] IDENTITY (1,1) NOT NULL,
-    [Id_venta] [int] NULL,
-    [cantidad] [varchar](50) NULL,
-	[Id_proveedor] int null,
-	[id_categoria] int null,
-    [Id_producto] [int] NULL,
-	PRIMARY KEY ([detalle_nro]),
-	FOREIGN KEY ([Id_venta]) REFERENCES dbo.VENTAS(Id_venta),
-	FOREIGN KEY (Id_producto) REFERENCES dbo.PRODUCTOS(Id_producto),
-	FOREIGN KEY (id_categoria) REFERENCES dbo.CATEGORIAS_PROD(id_categoria),
-	FOREIGN KEY (Id_proveedor) REFERENCES dbo.PROVEEDORES(Id_proveedor))
+SET QUOTED_IDENTIFIER ON
+GO
 
+CREATE TABLE [dbo].[DETALLE_VENTAS](
+	[detalle_nro] [int] IDENTITY(1,1) NOT NULL,
+	[Id_venta] [int] NULL,
+	[cantidad] [varchar](50) NULL,
+	[Id_proveedor] [int] NULL,
+	[id_categoria] [int] NULL,
+	[Id_producto] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[detalle_nro] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[DETALLE_VENTAS]  WITH CHECK ADD FOREIGN KEY([id_categoria])
+REFERENCES [dbo].[CATEGORIAS_PROD] ([id_categoria])
+GO
+
+ALTER TABLE [dbo].[DETALLE_VENTAS]  WITH CHECK ADD FOREIGN KEY([Id_producto])
+REFERENCES [dbo].[PRODUCTOS] ([Id_producto])
+GO
+
+ALTER TABLE [dbo].[DETALLE_VENTAS]  WITH CHECK ADD FOREIGN KEY([Id_proveedor])
+REFERENCES [dbo].[PROVEEDORES] ([Id_proveedor])
+GO
+
+ALTER TABLE [dbo].[DETALLE_VENTAS]  WITH CHECK ADD FOREIGN KEY([Id_venta])
+REFERENCES [dbo].[VENTAS] ([Id_venta])
+GO
 
 
 
