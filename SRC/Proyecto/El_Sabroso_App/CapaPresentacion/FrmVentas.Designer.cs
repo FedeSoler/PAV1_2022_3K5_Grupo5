@@ -94,6 +94,7 @@
             // 
             // comboCategoria
             // 
+            this.comboCategoria.Enabled = false;
             this.comboCategoria.FormattingEnabled = true;
             this.comboCategoria.Location = new System.Drawing.Point(76, 37);
             this.comboCategoria.Name = "comboCategoria";
@@ -146,6 +147,7 @@
             // 
             // MontoTotal
             // 
+            this.MontoTotal.Enabled = false;
             this.MontoTotal.Location = new System.Drawing.Point(602, 95);
             this.MontoTotal.Name = "MontoTotal";
             this.MontoTotal.Size = new System.Drawing.Size(100, 23);
@@ -313,6 +315,7 @@
             // 
             // comboProveedor
             // 
+            this.comboProveedor.Enabled = false;
             this.comboProveedor.FormattingEnabled = true;
             this.comboProveedor.Location = new System.Drawing.Point(74, 95);
             this.comboProveedor.Name = "comboProveedor";
