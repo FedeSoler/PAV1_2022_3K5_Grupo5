@@ -62,8 +62,8 @@ namespace El_Sabroso_App.CapaPresentacion
 
             
 
-            String consultasql2 =  
-                "SELECT pr.Id_producto, pr.nombre, p.Id_proveedor,p.nombre" +
+            String consultasql2 =
+                "SELECT pr.Id_producto, pr.nombre,c.id_categoria,c.nombre as categoria, p.Id_proveedor ,p.nombre as proveedor" +
                 " FROM PRODUCTOS pr" +
                 " LEFT JOIN PROVEEDORES p" +
                 " ON pr.id_proveedor = p.Id_proveedor" +
@@ -74,12 +74,12 @@ namespace El_Sabroso_App.CapaPresentacion
             DataTable resultado2 = DataManager.GetInstance().ConsultaSQL(consultasql2);
             //carga proveedor
             comboProveedor.DataSource = resultado2;
-            comboProveedor.DisplayMember = "nombre";
+            comboProveedor.DisplayMember = "proveedor";
             comboProveedor.ValueMember = "Id_proveedor";
             //carga categoria
-            //comboCategoria.DataSource = resultado2;
-            //comboCategoria.DisplayMember = "c.nombre";
-            //comboCategoria.ValueMember = "c.id_categoria";
+            comboCategoria.DataSource = resultado2;
+            comboCategoria.DisplayMember = "categoria";
+            comboCategoria.ValueMember = "c.id_categoria";
 
 
         }
@@ -138,6 +138,21 @@ namespace El_Sabroso_App.CapaPresentacion
             {
                 cargarComboProductos(productoSelect);
             }*/
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void comboProveedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarComboProveedores();
+        }
+
+        private void comboCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cargarComboCategoria();
         }
     }
 }
