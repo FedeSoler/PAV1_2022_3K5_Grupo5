@@ -164,6 +164,8 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.nombreProducto,
@@ -176,6 +178,7 @@
             this.Mail});
             this.dataGridView1.Location = new System.Drawing.Point(6, 124);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(789, 272);
             this.dataGridView1.TabIndex = 12;
@@ -184,41 +187,49 @@
             // 
             this.nombreProducto.HeaderText = "Producto";
             this.nombreProducto.Name = "nombreProducto";
+            this.nombreProducto.ReadOnly = true;
             // 
             // nombreProveedor
             // 
             this.nombreProveedor.HeaderText = "Proveedor";
             this.nombreProveedor.Name = "nombreProveedor";
+            this.nombreProveedor.ReadOnly = true;
             // 
             // nombreCategoria
             // 
             this.nombreCategoria.HeaderText = "Categoria";
             this.nombreCategoria.Name = "nombreCategoria";
+            this.nombreCategoria.ReadOnly = true;
             // 
             // Cantidad
             // 
             this.Cantidad.HeaderText = "Cantidad";
             this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
             // 
             // Cliente
             // 
             this.Cliente.HeaderText = "Cliente";
             this.Cliente.Name = "Cliente";
+            this.Cliente.ReadOnly = true;
             // 
             // ApellidoCliente
             // 
             this.ApellidoCliente.HeaderText = "ApellidoCliente";
             this.ApellidoCliente.Name = "ApellidoCliente";
+            this.ApellidoCliente.ReadOnly = true;
             // 
             // TelefonoCliente
             // 
             this.TelefonoCliente.HeaderText = "Telefono";
             this.TelefonoCliente.Name = "TelefonoCliente";
+            this.TelefonoCliente.ReadOnly = true;
             // 
             // Mail
             // 
             this.Mail.HeaderText = "Mail";
             this.Mail.Name = "Mail";
+            this.Mail.ReadOnly = true;
             // 
             // label5
             // 

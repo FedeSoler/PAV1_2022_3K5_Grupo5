@@ -15,6 +15,7 @@ namespace El_Sabroso_App.CapaEntidades
 
         public string Descripcion { get; set; }
 
+
         public int Precio { get; set; }
 
         public Categoria Categoria { get; set; }   

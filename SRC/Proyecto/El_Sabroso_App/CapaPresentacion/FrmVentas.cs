@@ -290,7 +290,7 @@ namespace El_Sabroso_App.CapaPresentacion
                 MessageBox.Show("Se genero la venta con sus detalles");
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 objTransaction.Rollback();
                 MessageBox.Show("La transaccion no se pudo completar");

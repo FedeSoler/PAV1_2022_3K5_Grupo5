@@ -101,12 +101,28 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
+
+
             FrmAltaProducto formulario = new FrmAltaProducto();
             var producto = (Producto)dgbProductos.CurrentRow.DataBoundItem;
             formulario.InicializarFormulario(FrmAltaProducto.FormMode.actualizar, producto);
             formulario.ShowDialog();
             button1_Click(sender, e);
+
+           
+
+
         }
+
+
+
+
+
+
+
+
+
+
 
         private Producto mapper(DataGridViewRow fila)
         {
