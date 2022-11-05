@@ -59,8 +59,6 @@ namespace El_Sabroso_App.CapaPresentacion
        private void cargarComboProductos(string productoSelect)
         {
 
-
-            
             DataTable tabla = cargarTabla(productoSelect);
             //carga proveedor
             comboProveedor.DataSource = tabla;
@@ -74,14 +72,6 @@ namespace El_Sabroso_App.CapaPresentacion
 
         }
 
-        private void calcularMonto()
-        {
-
-
-
-
-
-        }
 
 
 
@@ -113,11 +103,11 @@ namespace El_Sabroso_App.CapaPresentacion
             }
 
             //controla que no ingrese dos veces el mismo dato en la gridviwv intermedia
-            if ((dataGridView1.RowCount - 1) > 0)
+            if ((dataGridView1.RowCount) > 0)
             {
                 foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
-                    if (item.Cells[1].Value != null && item.Cells[0].Value.ToString() == comboProducto.SelectedValue.ToString())
+                    if (item.Cells[0].Value != null && item.Cells[0].Value.ToString() == comboProducto.Text.ToString())
                     {
 
                         MessageBox.Show("Ya se agrego este servicio");
@@ -127,16 +117,13 @@ namespace El_Sabroso_App.CapaPresentacion
             }
 
             dataGridView1.Rows.Add(comboProducto.Text, comboProveedor.Text, comboCategoria.Text, CantProd.Value, txtNombreCliente.Text, textBox2.Text, textBox4.Text, textBox3.Text);
-            // int a = Int32.Parse(MontoTotal.Text);
             int resultado = 0;
-            
-            
             foreach(DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[3].Value != null)
                 {
                     int a = Int32.Parse(row.Cells[3].Value.ToString()); //cantidad
-                    DataTable tabla = cargarTabla(row.Cells[0].Value.ToString());
+                    DataTable tabla = cargarTabla2(row.Cells[0].Value.ToString());
                     int b = Int32.Parse(tabla.Rows[0][2].ToString());
                     resultado += a * b;
                 }
@@ -161,8 +148,23 @@ namespace El_Sabroso_App.CapaPresentacion
                 " ON pr.id_proveedor = p.Id_proveedor" +
                 " LEFT JOIN CATEGORIAS_PROD c" +
                 " ON pr.id_categoria = c.id_categoria" +
-                " WHERE pr.nombre = " + "'" + productoSelect + "'"
-                ;
+                " WHERE pr.Id_producto = " + "'" + productoSelect + "'";
+            DataTable resultado2 = DataManager.GetInstance().ConsultaSQL(consultasql2);
+            return resultado2;
+
+        }
+
+        private DataTable cargarTabla2(string productoSelect)
+        {
+
+            String consultasql2 =
+                "SELECT pr.Id_producto, pr.nombre,pr.precio,c.id_categoria,c.nombre as categoria, p.Id_proveedor ,p.nombre as proveedor" +
+                " FROM PRODUCTOS pr" +
+                " LEFT JOIN PROVEEDORES p" +
+                " ON pr.id_proveedor = p.Id_proveedor" +
+                " LEFT JOIN CATEGORIAS_PROD c" +
+                " ON pr.id_categoria = c.id_categoria" +
+                " WHERE pr.nombre = " + "'" + productoSelect + "'";
             DataTable resultado2 = DataManager.GetInstance().ConsultaSQL(consultasql2);
             return resultado2;
 
@@ -180,8 +182,8 @@ namespace El_Sabroso_App.CapaPresentacion
             DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
             comboProducto.DataSource = resultado;
             comboProducto.DisplayMember = "nombre";
-            comboProducto.ValueMember = "nombre";
-            comboProducto.SelectedValue = "";
+            comboProducto.ValueMember = "id_producto";
+            comboProducto.Text = "";
             
         }
 
@@ -228,23 +230,22 @@ namespace El_Sabroso_App.CapaPresentacion
             {
                 SqlCommand cmd = new SqlCommand();
                 string consulta = "INSERT INTO[dbo].[VENTAS]" +
-                                    "([Id_venta]" +
-                                    ",[fecha]"+
+                                    "([fecha]"+
                                     ",[monto]"+
                                     ",[nombre_cliente]"+
                                     ",[apellido_cliente]"+
                                     ",[email_cliente]" +
-                                    ",[telefono_cliente]" +
-                                 "VALUES" +
-                                    ",@fecha" +
-                                     ",@monto" +
+                                    ",[telefono_cliente])" +
+                                 " VALUES " +
+                                    "(@fecha" +
+                                    ",@monto" +
                                     ",@nombreCliente" +
                                     ",@ApellidoCliente" +
                                     ",@emailCliente" +
-                                    ",@telefono";
+                                    ",@telefono)";
                 cmd.Parameters.Clear();
                 cmd.Parameters.AddWithValue("@fecha", DateTime.Now);
-                cmd.Parameters.AddWithValue("@monto", 2);
+                cmd.Parameters.AddWithValue("@monto", Int32.Parse(MontoTotal.Text));
                 cmd.Parameters.AddWithValue("@ApellidoCliente", textBox2.Text);
                 cmd.Parameters.AddWithValue("@emailCliente", textBox3.Text);
                 cmd.Parameters.AddWithValue("@nombreCliente",(txtNombreCliente.Text));
@@ -262,15 +263,15 @@ namespace El_Sabroso_App.CapaPresentacion
                 foreach (DataGridViewRow item in dataGridView1.Rows)
                 {
                     if(item.Cells[1].Value == null){ break; }
-                    string consultaDetalleFactura = "INSERT INTO [dbo].[CATEGORIAS_PROD]"
+                    string consultaDetalleFactura = "INSERT INTO[dbo].[DETALLE_VENTAS]"
                                                         +"([Id_venta]"
-                                                        +",[cantidad])"
-                                                        +",[Id_proveedor])"
-                                                        + ",[id_categoria])"
-                                                        + ",[Id_producto])"
-                                                     + "VALUES"
-                                                       +"(@idventa "
-                                                        +",@cantidad"
+                                                        +",[cantidad]"
+                                                        +",[Id_proveedor]"
+                                                        +",[id_categoria]"
+                                                        +",[Id_producto])"
+                                                    +" VALUES "
+                                                        + "(@idventa"
+                                                        + ",@cantidad"
                                                         + ",@id_proveedor"
                                                         + ",@categoria"
                                                         + ",@id_producto)";
