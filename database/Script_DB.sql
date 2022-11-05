@@ -1,4 +1,4 @@
-CREATE DATABASE El_Sabroso_DB
+
 
 USE [El_Sabroso_DB]
 GO
