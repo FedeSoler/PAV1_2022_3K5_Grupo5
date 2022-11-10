@@ -1,10 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="CapaPresentacion\FrmAltaProducto.cs">
+    <Compile Update="CapaPresentacion\abmProductos\FrmEditarProducto.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="CapaPresentacion\FrmConsultarProductos.cs">
+    <Compile Update="CapaPresentacion\abmProveedores\frmAltaPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CapaPresentacion\abmProveedores\frmConsultaPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CapaPresentacion\abmProveedores\frmEditarPro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CapaPresentacion\abmProductos\FrmAltaProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="CapaPresentacion\abmProductos\FrmConsultarProductos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="CapaPresentacion\FrmPrincipal.cs">
