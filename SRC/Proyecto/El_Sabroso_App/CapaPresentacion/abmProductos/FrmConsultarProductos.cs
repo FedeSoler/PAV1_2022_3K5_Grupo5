@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using El_Sabroso_App.CapaPresentacion.abmProductos;
 
 namespace El_Sabroso_App.CapaPresentacion
 {
@@ -37,15 +37,16 @@ namespace El_Sabroso_App.CapaPresentacion
         private void ConsultarProductos()
         {
             //Construimos la consulta sql para buscar el usuario en la base de datos.
-            String consultaSql = string.Concat(" SELECT P.*, Pro.nombre ",
+            String consultaSql = string.Concat(" SELECT P.*, Pro.nombre,cp.nombre ",
                                                    "   FROM PRODUCTOS P ",
                                                    "LEFT JOIN PROVEEDORES Pro on ",
-                                                   "P.Id_proveedor = Pro.Id_Proveedor where 1=1");
+                                                   "P.Id_proveedor = Pro.Id_Proveedor " +
+                                                   "LEFT JOIN CATEGORIAS_PROD CP ON p.id_categoria = cp.id_categoria where 1=1");
 
 
             if (!string.IsNullOrEmpty(txtNombre.Text))
             {
-                consultaSql += " AND P.nombre LIKE '%" + txtNombre.Text + "%'";
+                consultaSql += " AND P.nombre LIKE '" + txtNombre.Text + "%'";
             }
             if (chkActivo.Checked)
             {
@@ -58,7 +59,6 @@ namespace El_Sabroso_App.CapaPresentacion
 
             }
             //Usando el método GetDBHelper obtenemos la instancia unica de DBHelper (Patrón Singleton) y ejecutamos el método ConsultaSQL()
-
             DataTable resultado = DataManager.GetInstance().ConsultaSQL(consultaSql);
             dgbProductos.Rows.Clear();
 
@@ -69,7 +69,7 @@ namespace El_Sabroso_App.CapaPresentacion
                     bool activo = fila["activo"].ToString().Equals("S");
 
                     int id = (int)fila["Id_producto"];
-                    dgbProductos.Rows.Add(new object[] { fila["nombre"].ToString(), fila["Descripcion"], fila["Precio"], fila["nombre1"]/*aca es el proveedor*/, activo, fila["Id_producto"].ToString() });
+                    dgbProductos.Rows.Add(new object[] { fila["nombre"].ToString(), fila["Descripcion"], fila["Precio"], fila["nombre1"] /*aca es el proveedor*/,fila["nombre2"].ToString(), activo, fila["Id_producto"].ToString() });
                 }
                 habilitarControles(true);
             }
@@ -101,16 +101,17 @@ namespace El_Sabroso_App.CapaPresentacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-
-
-            FrmAltaProducto formulario = new FrmAltaProducto();
-            var producto = (Producto)dgbProductos.CurrentRow.DataBoundItem;
-            formulario.InicializarFormulario(FrmAltaProducto.FormMode.actualizar, producto);
-            formulario.ShowDialog();
-            button1_Click(sender, e);
-
-           
-
+            Producto producto = new Producto();
+            DataGridViewRow grid = dgbProductos.SelectedRows[0];
+            producto.Nombre = (string)grid.Cells[0].Value;
+            producto.Descripcion = (string)grid.Cells[1].Value;
+            producto.Precio = Int32.Parse((string)grid.Cells[2].Value.ToString());
+            producto.IdProducto = Int32.Parse((string)grid.Cells[6].Value);
+            string nombre_cat = (string)grid.Cells[4].Value;
+            string nombreProv = (string)grid.Cells[3].Value;
+            frmEditarProducto ventana = new frmEditarProducto();
+            ventana.incializar(producto,nombreProv,nombre_cat);
+            ventana.ShowDialog();
 
         }
 
@@ -138,9 +139,6 @@ namespace El_Sabroso_App.CapaPresentacion
         {
             eliminarProducto();
             ConsultarProductos();
-            
-
-
         }
 
 
@@ -159,7 +157,7 @@ namespace El_Sabroso_App.CapaPresentacion
         {
             try
             {
-                int id = Int32.Parse(dgbProductos.Rows[dgbProductos.CurrentRow.Index].Cells[5].Value.ToString());
+                int id = Int32.Parse(dgbProductos.Rows[dgbProductos.CurrentRow.Index].Cells[6].Value.ToString());
                 return id;
             }
             catch

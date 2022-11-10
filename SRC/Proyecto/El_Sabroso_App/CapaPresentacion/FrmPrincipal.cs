@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using El_Sabroso_App.CapaEntidades;
 using El_Sabroso_App.CapaDatos;
 using El_Sabroso_App.CapaPresentacion;
-
+using El_Sabroso_App.CapaPresentacion.abmPro;
 
 namespace El_Sabroso_App.CapaPresentacion
 {
@@ -67,6 +67,18 @@ namespace El_Sabroso_App.CapaPresentacion
         {
             FrmVentas Venta = new FrmVentas();
             Venta.ShowDialog();
+        }
+
+        private void consultaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmConsultaPro ventana = new frmConsultaPro();
+            ventana.ShowDialog();
+        }
+
+        private void altaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmAltaPro alta = new frmAltaPro();
+            alta.ShowDialog();
         }
     }
 }
