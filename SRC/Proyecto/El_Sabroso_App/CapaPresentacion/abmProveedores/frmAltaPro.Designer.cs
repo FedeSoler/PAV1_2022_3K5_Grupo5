@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAltaPro));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtCiudad = new System.Windows.Forms.MaskedTextBox();
             this.txtDireccion = new System.Windows.Forms.MaskedTextBox();
@@ -70,6 +71,7 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AltaProveedor";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // txtCiudad
             // 
@@ -211,8 +213,11 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAltaPro";
-            this.Text = "frmAltaPro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Alta Proveedor";
+            this.Load += new System.EventHandler(this.frmAltaPro_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

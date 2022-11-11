@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarPro));
             this.label1 = new System.Windows.Forms.Label();
             this.grbEditar = new System.Windows.Forms.GroupBox();
             this.dtpFachaAlta = new System.Windows.Forms.DateTimePicker();
@@ -231,8 +232,9 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.grbEditar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditarPro";
-            this.Text = "frmEditarPro";
+            this.Text = "Editar Proveedor";
             this.Load += new System.EventHandler(this.frmEditarPro_Load);
             this.grbEditar.ResumeLayout(false);
             this.grbEditar.PerformLayout();
