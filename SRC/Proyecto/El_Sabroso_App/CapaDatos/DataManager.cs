@@ -12,7 +12,7 @@ public class DataManager
     private static DataManager instance;
     public DataManager()
     {
-        string_conexion = "Data Source=DESKTOP-R1KNBKQ;Initial Catalog=El_Sabroso_DB;Integrated Security=true;";
+        string_conexion = "Data Source=PCGD\\SQLEXPRESS;Initial Catalog=El_Sabroso_DB;Integrated Security=true;";
     }
 
     // Con el siguiente método aplicamos el patrón singleton
