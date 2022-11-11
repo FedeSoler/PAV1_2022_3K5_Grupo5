@@ -91,7 +91,7 @@ namespace El_Sabroso_App.CapaPresentacion.abmPro
             prov.Nombre = (string)grid.Cells[1].Value;
             prov.Apellido = (string)grid.Cells[2].Value;
             prov.Email= (string)grid.Cells[3].Value;
-            prov.Telefono = Int32.Parse((string)grid.Cells[4].Value);
+            prov.Telefono = (string)grid.Cells[4].Value;
             prov.Direccion = (string)grid.Cells[5].Value;
             prov.Ciudad = (string)grid.Cells[6].Value;
             prov.Fecha_Alta = (DateTime)grid.Cells[7].Value;

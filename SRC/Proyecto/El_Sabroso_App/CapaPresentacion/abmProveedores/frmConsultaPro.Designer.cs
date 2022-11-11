@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultaPro));
             this.dgvProv = new System.Windows.Forms.DataGridView();
             this.id_prov = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -305,8 +306,9 @@
             this.Controls.Add(this.btnDarBaja);
             this.Controls.Add(this.grbFiltros);
             this.Controls.Add(this.dgvProv);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConsultaPro";
-            this.Text = "frmConsultaPro";
+            this.Text = "Consulta Proveedor";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProv)).EndInit();
             this.grbFiltros.ResumeLayout(false);
             this.grbFiltros.PerformLayout();

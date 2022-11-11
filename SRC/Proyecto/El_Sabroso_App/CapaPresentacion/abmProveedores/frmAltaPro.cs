@@ -25,7 +25,7 @@ namespace El_Sabroso_App.CapaPresentacion.abmPro
             
             bool van = Validador.Validador.validar(Controls);
             if (!van) { return; }
-            Proveedor prov = new Proveedor(txtNombre.Text, txtApeliido.Text, txtMail.Text, Int32.Parse(txtTelefono.Text), txtDireccion.Text, txtCiudad.Text, dtaFecha.Value);
+            Proveedor prov = new Proveedor(txtNombre.Text, txtApeliido.Text, txtMail.Text, txtTelefono.Text, txtDireccion.Text, txtCiudad.Text, dtaFecha.Value);
             bool exist = Validador.Validador.validarExistenciaPro(prov.Nombre, prov.Apellido);
             if (!exist) {
                 MessageBox.Show("El Proveedor ya existe");
@@ -92,6 +92,16 @@ namespace El_Sabroso_App.CapaPresentacion.abmPro
                 throw;
             }
             return resultado;
+        }
+
+        private void frmAltaPro_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }
