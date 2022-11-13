@@ -130,5 +130,10 @@ namespace El_Sabroso_App.CapaPresentacion.abmProductos
                 throw;
             }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
