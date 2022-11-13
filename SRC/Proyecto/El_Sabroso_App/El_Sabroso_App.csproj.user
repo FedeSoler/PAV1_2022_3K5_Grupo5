@@ -31,4 +31,12 @@
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Update="El_Sabroso_DBDataSet.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Update="El_Sabroso_DBDataSet1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
 </Project>

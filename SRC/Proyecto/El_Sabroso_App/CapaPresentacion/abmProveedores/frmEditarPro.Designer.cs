@@ -83,7 +83,7 @@
             this.grbEditar.Size = new System.Drawing.Size(247, 332);
             this.grbEditar.TabIndex = 1;
             this.grbEditar.TabStop = false;
-            this.grbEditar.Text = "EditarProveedor";
+            this.grbEditar.Text = "Editar Proveedor";
             // 
             // dtpFachaAlta
             // 
@@ -147,9 +147,9 @@
             this.label8.Location = new System.Drawing.Point(15, 295);
             this.label8.Name = "label8";
             this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label8.Size = new System.Drawing.Size(65, 15);
+            this.label8.Size = new System.Drawing.Size(62, 15);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Fecha Alta:";
+            this.label8.Text = "Fecha Alta";
             // 
             // label7
             // 
@@ -235,6 +235,7 @@
             this.Controls.Add(this.grbEditar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditarPro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar Proveedor";
             this.Load += new System.EventHandler(this.frmEditarPro_Load);
             this.grbEditar.ResumeLayout(false);
