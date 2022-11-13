@@ -128,9 +128,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(23, 205);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(59, 15);
+            this.label7.Size = new System.Drawing.Size(62, 15);
             this.label7.TabIndex = 6;
-            this.label7.Text = "FechaAlta";
+            this.label7.Text = "Fecha Alta";
             // 
             // label6
             // 

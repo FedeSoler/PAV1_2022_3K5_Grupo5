@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEditarProducto));
             this.label1 = new System.Windows.Forms.Label();
             this.grbEditar = new System.Windows.Forms.GroupBox();
             this.cboCategoria = new System.Windows.Forms.ComboBox();
@@ -184,6 +185,7 @@
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // frmEditarProducto
             // 
@@ -193,7 +195,9 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.grbEditar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmEditarProducto";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Editar";
             this.Load += new System.EventHandler(this.frmEditarProducto_Load);
             this.grbEditar.ResumeLayout(false);

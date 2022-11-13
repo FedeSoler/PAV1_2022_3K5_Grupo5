@@ -215,9 +215,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(525, 64);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 15);
+            this.label7.Size = new System.Drawing.Size(65, 15);
             this.label7.TabIndex = 6;
-            this.label7.Text = "FechaAlta:";
+            this.label7.Text = "Fecha Alta:";
             // 
             // label6
             // 
@@ -308,6 +308,7 @@
             this.Controls.Add(this.dgvProv);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConsultaPro";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Proveedor";
             ((System.ComponentModel.ISupportInitialize)(this.dgvProv)).EndInit();
             this.grbFiltros.ResumeLayout(false);
