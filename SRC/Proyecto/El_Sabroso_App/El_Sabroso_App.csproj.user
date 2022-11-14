@@ -30,6 +30,9 @@
     <Compile Update="CapaPresentacion\FrmVentas.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CapaPresentacion\Reports\ReporteVentas.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Update="El_Sabroso_DBDataSet.xsd">

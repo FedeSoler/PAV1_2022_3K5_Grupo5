@@ -21,5 +21,11 @@ namespace El_Sabroso_App.CapaPresentacion.Reports
         {
 
         }
+
+        private void ReporteVentas_Load_1(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
